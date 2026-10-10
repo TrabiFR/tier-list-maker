@@ -6,7 +6,7 @@
 
 <p align="center">
   Make tier lists with your own tiers, colors and images.<br>
-  A native desktop app written in Rust. Made by <b>MacFlunder</b>.
+  A native desktop app written in Rust. Made by <b>Trabi</b>.
 </p>
 
 ## Download
