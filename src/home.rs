@@ -12,7 +12,8 @@ use eframe::egui::{
 };
 
 const CARD_W: f32 = 284.0;
-const CARD_H: f32 = 246.0;
+// 12 margin + 142 preview + 10 + 24 name + 25 meta + 13 progress + 30 buttons + 12 margin
+const CARD_H: f32 = 268.0;
 
 enum HomeAction {
     New,
@@ -155,7 +156,11 @@ fn list_card(ui: &mut Ui, list: &TierList) -> Option<HomeAction> {
     let mut job = LayoutJob::simple_singleline(list.name.clone(), FontId::proportional(16.0), TEXT);
     job.wrap = egui::text::TextWrapping::truncate_at_width(inner.width());
     let galley = painter.layout_job(job);
-    painter.galley(pos2(inner.min.x, preview.max.y + 10.0), galley, TEXT);
+    let name_y = preview.max.y + 10.0;
+    let meta_y = name_y + 24.0;
+    let bar_y = meta_y + 25.0;
+    let y = bar_y + 13.0; // top of the button row
+    painter.galley(pos2(inner.min.x, name_y), galley, TEXT);
 
     let meta = format!(
         "{} · {} · {}",
@@ -164,7 +169,7 @@ fn list_card(ui: &mut Ui, list: &TierList) -> Option<HomeAction> {
         time_ago(list.modified)
     );
     painter.text(
-        pos2(inner.min.x, preview.max.y + 34.0),
+        pos2(inner.min.x, meta_y),
         Align2::LEFT_TOP,
         meta,
         FontId::proportional(12.0),
@@ -174,13 +179,12 @@ fn list_card(ui: &mut Ui, list: &TierList) -> Option<HomeAction> {
     // Progress: how many images are already placed.
     if !list.items.is_empty() {
         let done = list.ranked_count() as f32 / list.items.len() as f32;
-        let bar = Rect::from_min_size(pos2(inner.min.x, inner.max.y - 41.0), vec2(inner.width(), 3.0));
+        let bar = Rect::from_min_size(pos2(inner.min.x, bar_y), vec2(inner.width(), 3.0));
         painter.rect_filled(bar, 2.0, Color32::from_rgb(50, 50, 56));
         painter.rect_filled(Rect::from_min_size(bar.min, vec2(bar.width() * done, 3.0)), 2.0, ACCENT);
     }
 
     let b = 30.0;
-    let y = inner.max.y - b;
     let buttons = [
         (Icon::Trash, "Delete", HomeAction::Delete(list.id.clone()), true),
         (Icon::Package, "Export .tierlist file", HomeAction::ExportPackage(list.id.clone()), false),
@@ -197,7 +201,9 @@ fn list_card(ui: &mut Ui, list: &TierList) -> Option<HomeAction> {
     let open_rect = Rect::from_min_size(pos2(inner.min.x, y), vec2(70.0, b));
     let open = ui.interact(open_rect, Id::new(("card_open", &list.id)), Sense::click());
     let open_color = if open.hovered() { ACCENT } else { TEXT };
-    ui.painter().text(open_rect.left_center(), Align2::LEFT_CENTER, "Open →", FontId::proportional(14.0), open_color);
+    let text = ui.painter().text(open_rect.left_center(), Align2::LEFT_CENTER, "Open", FontId::proportional(14.0), open_color);
+    let arrow = Rect::from_min_size(pos2(text.max.x + 5.0, open_rect.center().y - 7.0), vec2(14.0, 14.0));
+    Icon::ArrowRight.image(14.0, open_color).paint_at(ui, arrow);
     if open.on_hover_cursor(CursorIcon::PointingHand).clicked() {
         action = Some(HomeAction::Open(list.id.clone()));
     }
@@ -218,7 +224,7 @@ fn draw_preview(painter: &Painter, rect: Rect, list: &TierList) {
     }
     let gap = 2.0;
     let row_h = (rect.height() - gap * (shown as f32 + 1.0)) / shown as f32;
-    let label_w = 42.0;
+    let label_w = 54.0;
     for (i, tier) in list.tiers.iter().take(shown).enumerate() {
         let y = rect.min.y + gap + i as f32 * (row_h + gap);
         let label = Rect::from_min_size(pos2(rect.min.x + gap, y), vec2(label_w, row_h));
@@ -237,14 +243,12 @@ fn draw_preview(painter: &Painter, rect: Rect, list: &TierList) {
         painter.rect_filled(label, radius_l, rgb(tier.color));
         painter.rect_filled(content, radius_r, rgb(list.settings.row_color));
 
-        let text: String = tier.label.lines().next().unwrap_or("").chars().take(3).collect();
-        painter.text(
-            label.center(),
-            Align2::CENTER_CENTER,
-            text,
-            FontId::proportional((row_h * 0.5).clamp(8.0, 14.0)),
-            rgb(tier.text_color()),
-        );
+        let first_line = tier.label.lines().next().unwrap_or("").trim().to_owned();
+        let color = rgb(tier.text_color());
+        let mut job = LayoutJob::simple_singleline(first_line, FontId::proportional((row_h * 0.5).clamp(8.0, 14.0)), color);
+        job.wrap = egui::text::TextWrapping::truncate_at_width(label_w - 6.0);
+        let galley = painter.layout_job(job);
+        painter.galley(label.center() - galley.rect.center().to_vec2(), galley, color);
 
         let sq = (row_h - 6.0).max(3.0);
         let fit = ((content.width() - 3.0) / (sq + 3.0)).floor().max(0.0) as usize;

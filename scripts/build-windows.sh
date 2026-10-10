@@ -25,6 +25,7 @@ echo "==> Rendering icons"
 cargo run --quiet --example make_icon
 
 echo "==> Building $TARGET"
+source scripts/remap-paths.sh
 rustup target add "$TARGET" >/dev/null
 cargo build --release --target "$TARGET"
 

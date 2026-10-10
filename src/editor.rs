@@ -276,8 +276,8 @@ impl App {
                         out.actions.push(Action::AddImages);
                     }
                     ui.separator();
-                    let redo_tip = if cfg!(target_os = "macos") { "Redo (⌘⇧Z)" } else { "Redo (Ctrl+Y)" };
-                    let undo_tip = if cfg!(target_os = "macos") { "Undo (⌘Z)" } else { "Undo (Ctrl+Z)" };
+                    let redo_tip = if cfg!(target_os = "macos") { "Redo (Cmd+Shift+Z)" } else { "Redo (Ctrl+Y)" };
+                    let undo_tip = if cfg!(target_os = "macos") { "Undo (Cmd+Z)" } else { "Undo (Ctrl+Z)" };
                     if icon_button(ui, Icon::Redo, redo_tip, !ed.redo.is_empty()).clicked() {
                         pending = Some(Pending::Redo);
                     }
@@ -767,8 +767,8 @@ fn item_menu(ui: &mut Ui, ed: &Editor, id: &str, zone: Zone, out: &mut FrameOut)
             if label.chars().count() > 24 {
                 label = label.chars().take(23).collect::<String>() + "…";
             }
-            let text = RichText::new(format!("■  {label}"));
-            if ui.add_enabled(zone != Zone::Tier(ti), egui::Button::new(text)).clicked() {
+            let button = egui::Button::image_and_text(Icon::Swatch.image(13.0, rgb(tier.color)), label);
+            if ui.add_enabled(zone != Zone::Tier(ti), button).clicked() {
                 out.actions.push(Action::MoveItem { item: id.to_owned(), to: Zone::Tier(ti), index: usize::MAX });
                 ui.close_menu();
             }

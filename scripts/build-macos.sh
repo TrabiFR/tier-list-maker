@@ -17,6 +17,7 @@ echo "==> Rendering icons"
 cargo run --quiet --example make_icon -- "$OUT/AppIcon.iconset"
 
 echo "==> Building release binaries"
+source scripts/remap-paths.sh
 rustup target add aarch64-apple-darwin x86_64-apple-darwin >/dev/null
 cargo build --release --target aarch64-apple-darwin
 cargo build --release --target x86_64-apple-darwin

@@ -3492,7 +3492,7 @@ dependencies = [
 
 [[package]]
 name = "tierlist-maker"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "ab_glyph",
  "anyhow",

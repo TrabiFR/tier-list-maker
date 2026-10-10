@@ -26,6 +26,7 @@ macro_rules! icons {
 
 icons! {
     ArrowLeft => "arrow-left",
+    ArrowRight => "arrow-right",
     ArrowUpToLine => "arrow-up-to-line",
     ArrowDownToLine => "arrow-down-to-line",
     Bookmark => "bookmark",
@@ -54,6 +55,7 @@ icons! {
     RotateCcw => "rotate-ccw",
     Settings => "settings",
     Sliders => "sliders-horizontal",
+    Swatch => "swatch",
     Trash => "trash",
     Alert => "triangle-alert",
     Undo => "undo-2",
