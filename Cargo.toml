@@ -1,0 +1,38 @@
+[package]
+name = "tierlist-maker"
+version = "1.0.0"
+edition = "2021"
+description = "A desktop tier list maker with custom tiers, image uploads, autosave and PNG export"
+authors = ["MacFlunder"]
+publish = false
+
+[[bin]]
+name = "tierlist-maker"
+path = "src/main.rs"
+
+[dependencies]
+eframe = "0.31"
+egui_extras = { version = "0.31", features = ["svg"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "gif", "webp", "bmp", "tiff", "ico"] }
+rfd = "0.15"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+dirs = "6"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+ab_glyph = "0.2"
+anyhow = "1"
+
+[dev-dependencies]
+resvg = "0.45"
+
+[build-dependencies]
+winresource = "0.1"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+strip = true
+
+# Image decoding is painfully slow without optimizations, even in debug builds.
+[profile.dev.package."*"]
+opt-level = 2

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2c2c33"/>
+      <stop offset="1" stop-color="#121215"/>
+    </linearGradient>
+  </defs>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/>
+  <rect x="101" y="101" width="822" height="822" rx="184" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="2"/>
+
+  <!-- S -->
+  <rect x="176" y="220" width="150" height="104" rx="14" fill="#FF7F7F"/>
+  <rect x="334" y="220" width="514" height="104" rx="14" fill="#000000" fill-opacity="0.35"/>
+  <!-- A -->
+  <rect x="176" y="340" width="150" height="104" rx="14" fill="#FFBF7F"/>
+  <rect x="334" y="340" width="514" height="104" rx="14" fill="#000000" fill-opacity="0.35"/>
+  <!-- B -->
+  <rect x="176" y="460" width="150" height="104" rx="14" fill="#FFDF7F"/>
+  <rect x="334" y="460" width="514" height="104" rx="14" fill="#000000" fill-opacity="0.35"/>
+  <!-- C -->
+  <rect x="176" y="580" width="150" height="104" rx="14" fill="#FFFF7F"/>
+  <rect x="334" y="580" width="514" height="104" rx="14" fill="#000000" fill-opacity="0.35"/>
+  <!-- D -->
+  <rect x="176" y="700" width="150" height="104" rx="14" fill="#BFFF7F"/>
+  <rect x="334" y="700" width="514" height="104" rx="14" fill="#000000" fill-opacity="0.35"/>
+
+  <!-- images -->
+  <g fill="#ffffff" fill-opacity="0.2">
+    <rect x="344" y="230" width="84" height="84" rx="12"/>
+    <rect x="440" y="230" width="84" height="84" rx="12"/>
+    <rect x="536" y="230" width="84" height="84" rx="12"/>
+
+    <rect x="344" y="350" width="84" height="84" rx="12"/>
+    <rect x="440" y="350" width="84" height="84" rx="12"/>
+    <rect x="536" y="350" width="84" height="84" rx="12"/>
+    <rect x="632" y="350" width="84" height="84" rx="12"/>
+    <rect x="728" y="350" width="84" height="84" rx="12"/>
+
+    <rect x="344" y="470" width="84" height="84" rx="12"/>
+    <rect x="440" y="470" width="84" height="84" rx="12"/>
+
+    <rect x="344" y="590" width="84" height="84" rx="12"/>
+    <rect x="440" y="590" width="84" height="84" rx="12"/>
+    <rect x="536" y="590" width="84" height="84" rx="12"/>
+    <rect x="632" y="590" width="84" height="84" rx="12"/>
+
+    <rect x="344" y="710" width="84" height="84" rx="12"/>
+  </g>
+
+  <!-- Lucide "crown" icon on the S tier -->
+  <g transform="translate(215 236) scale(3)" fill="none" stroke="#2a1414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/>
+    <path d="M5 21h14"/>
+  </g>
+</svg>
