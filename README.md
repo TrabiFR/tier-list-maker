@@ -69,6 +69,6 @@ On Windows you can build the app with `cargo build --release`, and the installer
 
 ## Credits
 
-Made by **MacFlunder**.
+Made by **Trabi**.
 
 Built with [egui](https://github.com/emilk/egui). Icons from [Lucide](https://lucide.dev) (ISC license, see `assets/icons/LICENSE`).
