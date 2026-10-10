@@ -3,7 +3,7 @@ name = "tierlist-maker"
 version = "1.0.1"
 edition = "2021"
 description = "A desktop tier list maker with custom tiers, image uploads, autosave and PNG export"
-authors = ["MacFlunder"]
+authors = ["Trabi"]
 publish = false
 
 [[bin]]

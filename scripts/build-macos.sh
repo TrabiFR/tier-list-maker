@@ -45,7 +45,7 @@ cat > "$APP/Contents/Info.plist" <<PLIST
   <key>CFBundleVersion</key><string>$VERSION</string>
   <key>LSMinimumSystemVersion</key><string>11.0</string>
   <key>LSApplicationCategoryType</key><string>public.app-category.entertainment</string>
-  <key>NSHumanReadableCopyright</key><string>Made by MacFlunder</string>
+  <key>NSHumanReadableCopyright</key><string>Made by Trabi</string>
   <key>NSHighResolutionCapable</key><true/>
   <key>NSSupportsAutomaticGraphicsSwitching</key><true/>
 </dict>

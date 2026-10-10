@@ -22,7 +22,7 @@ SetCompressor /SOLID lzma
 !endif
 
 !define APP_NAME "Tier List Maker"
-!define PUBLISHER "MacFlunder"
+!define PUBLISHER "Trabi"
 !define EXE_NAME "Tier List Maker.exe"
 !define REG_KEY "Software\TierListMaker"
 !define UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\TierListMaker"

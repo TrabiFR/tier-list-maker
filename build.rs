@@ -11,8 +11,8 @@ fn main() {
     res.set_icon("assets/app-icon.ico");
     res.set("ProductName", "Tier List Maker");
     res.set("FileDescription", "Tier List Maker");
-    res.set("CompanyName", "MacFlunder");
-    res.set("LegalCopyright", "Made by MacFlunder");
+    res.set("CompanyName", "Trabi");
+    res.set("LegalCopyright", "Made by Trabi");
 
     // Cross-compiling from macOS/Linux: use the MinGW tools from PATH.
     let host = std::env::var("HOST").unwrap_or_default();

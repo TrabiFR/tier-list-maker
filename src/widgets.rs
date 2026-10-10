@@ -117,9 +117,9 @@ pub fn dialog_title(ui: &mut Ui, icon: Icon, title: &str) {
     ui.add_space(10.0);
 }
 
-pub const CREDIT: &str = "Made by MacFlunder";
+pub const CREDIT: &str = "Made by Trabi";
 
-/// The small "Made by MacFlunder" credit line.
+/// The small "Made by Trabi" credit line.
 pub fn credit(ui: &mut Ui) {
     ui.vertical_centered(|ui| {
         ui.label(RichText::new(CREDIT).size(12.0).color(TEXT_FAINT));
